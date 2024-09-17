@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TiendaLibros.API.Data;
-using TiendaLibros.API.DTO;
+using TiendaLibros.API.DTO.Autor;
 using TiendaLibros.API.Models;
 using TiendaLibros.API.Static;
 

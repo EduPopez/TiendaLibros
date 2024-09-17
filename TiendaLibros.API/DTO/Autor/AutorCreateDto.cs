@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TiendaLibros.API.DTO
+namespace TiendaLibros.API.DTO.Autor
 {
-    public class AutorDto: BaseDto
+    public class AutorCreateDto
     {
         [Required]
         [StringLength(50)]

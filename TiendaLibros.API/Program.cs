@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using TiendaLibros.API.Configurations;
 using TiendaLibros.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+// EF
 var cadenaConexion = builder.Configuration.GetConnectionString("TiendaLibrosConnection");
 builder.Services.AddDbContext<TiendaLibrosContext>(options => options.UseSqlServer(cadenaConexion));
 
@@ -14,14 +16,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Serilog
 builder.Host.UseSerilog((ctx, lc) => 
     lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration)
 );
 
+// Cors
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", b => b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 });
+
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(MapperConfig));
 
 var app = builder.Build();
 

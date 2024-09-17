@@ -33,7 +33,7 @@ public partial class TiendaLibrosContext : DbContext
             entity.ToTable("Autor");
 
             entity.Property(e => e.Id)
-                .ValueGeneratedNever()
+                .ValueGeneratedOnAdd()
                 .HasColumnName("id");
             entity.Property(e => e.Apellidos)
                 .HasMaxLength(50)
